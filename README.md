@@ -65,10 +65,10 @@ var API = spec.define({ ... });
 - login
   - Option
   - Set authentication API if this API requires authentication.
-- request
+- [request](#request)
   - Option
   - Describe request specification.
-- response
+- [response](#response)
   - **Required**
   - Describe response specification.
 - isSuccess / isBadRequest / isNotFound / isUnauthorized / isClientError
