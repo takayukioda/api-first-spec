@@ -57,7 +57,7 @@ var API = spec.define({ ... });
 - endpoint
   - **Required**
   - Path of API
-  - [more details](#### endpoint)
+  - [more details](#endpoint)
 - method
   - **Required**
   - HTTP method
@@ -74,7 +74,7 @@ var API = spec.define({ ... });
 - isSuccess / isBadRequest / isNotFound / isUnauthorized / isClientError
   - Option
   - Custom verification functions
-  - [more details](#### custom verification)
+  - [more details](#custom verification)
 
 #### endpoint
 If you want to use parameter in path, you can use parameter name with `[]`.
@@ -98,15 +98,15 @@ You can override these methods.
   - Option
   - Content-Type header of request
   - Default value is `application/x-www-form-urlencoded`
-  - [more details](#### request.contentType)
+  - [more details](#request.contentType)
 - request.params
   - Option
   - Describe request parameters
-  - See [parameters section](#### Parameters) for more details.
+  - See [parameters section](#Parameters) for more details.
 - request.rules
   - Option
   - Describe validation rules for request parameters.
-  - See [rules section](#### Rules).
+  - See [rules section](#Rules).
   
 #### request.contentType
 If omitted, its defalut value is "application/x-www-form-urlencoded".  
@@ -125,11 +125,11 @@ multipart/form-data isn't supported yet.
 - response.data
   - Option
   - Describe response data structure.
-  - See [parameters section](### Parameters).
+  - See [parameters section](#Parameters).
 - response.rules
   - Option
   - Describe validation rules of response data.
-  - See [rules section](### Rules) for more details.
+  - See [rules section](#Rules) for more details.
 - response.strict
   - Option
   - If true, the response json can't have the key doesn't defined in response.data.
