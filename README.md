@@ -22,7 +22,7 @@ npm install api-first-spec
 mocha your_test.spec.js
 ```
 
-If you want to see communication detail, run with environment variables API_FIRST_SPEC_VERBOSE
+If you want to see communication detail, run with environment variables `API_FIRST_SPEC_VERBOSE`
 
 ``` bash
 env API_FIRST_SPEC_VERBOSE=true mocha your_test.spec.js
@@ -45,104 +45,45 @@ var API = spec.define({ ... });
 //module.exports = API;
 ```
 
-#### Config reference of define method.
-##### name
-Option.  
+## Config References
 
-API name.
+### Top
+- name
+  - Option
+  - API name
+- description
+  - Option
+  - Any descriptions about API
+- endpoint
+  - **Required**
+  - Path of API
+  - [more details](#### endpoint)
+- method
+  - **Required**
+  - HTTP method
+  - `GET`, `POST`, `PUT`, and `DELETE` are allowed.
+- login
+  - Option
+  - Set authentication API if this API requires authentication.
+- request
+  - Option
+  - Describe request specification.
+- response
+  - **Required**
+  - Describe response specification.
+- isSuccess / isBadRequest / isNotFound / isUnauthorized / isClientError
+  - Option
+  - Custom verification functions
+  - [more details](#### custom verification)
 
-##### description
-Option.  
-
-Any description.
-
-##### endpoint
-Required.  
-
-Path of API.  
-
-If you want to use parameter in path, you can use parameter name with [].
+#### endpoint
+If you want to use parameter in path, you can use parameter name with `[]`.
 
 ``` javascript
-"endpoint": "/item/[itemId]/detail"
+"endpoint": "/item/[id]/detail"
 ```
 
-##### method
-Required.
-
-HTTP method.
-
-Allowed values are ["GET", "POST", "PUT", "DELETE"];
-
-##### login
-Option.
-
-If this API requires authentication, set authentication API.
-
-##### request
-Option.
-
-Describe request specification.
-
-##### request.contentType
-Option.
-
-Content-Type header of request.  
-If omitted, its defalut value is "application/x-www-form-urlencoded".
-
-Currently, supported values are follows.
-
-- application/x-www-form-urlencoded
-- application/json
-
-multipart/form-data isn't supported yet.
-
-##### request.params
-Option.
-
-Describe request parameters.
-
-See parameters section.
-
-##### request.rules
-Option.
-
-Describe validation rules of request parameters.
-
-See rules section.
-
-##### response
-Required.
-
-Describe response specification.
-
-##### response.contentType
-Option.
-
-Content-Type header of response.  
-If omitted, its default value is "application/json".
-
-##### response.data
-Option.
-
-Describe response data structure.
-
-See parameters section.
-
-##### response.rules
-Option.
-
-Describe validation rules of response data.
-
-See rules section.
-
-##### response.strict
-Option.
-
-If true, the response json can't have the key doesn't defined in response.data.
-
-##### isSuccess, isBadRequest, isNotFound, isUnauthorized, isClientError
-Option.
+#### custom verification
 
 The methods corresponding to test methods.  
 These methods judge the test succeed or not.
@@ -151,12 +92,56 @@ Default implementations are [here](https://github.com/shunjikonishi/api-first-sp
 
 You can override these methods.
 
+### Request
+
+- request.contentType
+  - Option
+  - Content-Type header of request
+  - Default value is `application/x-www-form-urlencoded`
+  - [more details](#### request.contentType)
+- request.params
+  - Option
+  - Describe request parameters
+  - See [parameters section](#### Parameters) for more details.
+- request.rules
+  - Option
+  - Describe validation rules for request parameters.
+  - See [rules section](#### Rules).
+  
+#### request.contentType
+If omitted, its defalut value is "application/x-www-form-urlencoded".  
+Currently, supported values are follows.
+
+- application/x-www-form-urlencoded
+- application/json
+
+multipart/form-data isn't supported yet.
+
+### Response
+- response.contentType
+  - Option
+  - Content-Type header of response.  
+  - Default value is `application/json`.
+- response.data
+  - Option
+  - Describe response data structure.
+  - See [parameters section](### Parameters).
+- response.rules
+  - Option
+  - Describe validation rules of response data.
+  - See [rules section](### Rules) for more details.
+- response.strict
+  - Option
+  - If true, the response json can't have the key doesn't defined in response.data.
+- isSuccess / isBadRequest / isNotFound / isUnauthorized / isClientError
+  - Option
+
 ### Parameters
 Define parameters as is.
 
 - Define parameter name and its data type.
-- If parameter is an object, you can use object literal({}).
-- If parameter is an array, you can use array literal([]).
+- If parameter is an object, you can use object literal `{}`.
+- If parameter is an array, you can use array literal `[]`.
 
 ``` javascript
   data: {
